@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "voiceover"
+version = "1.0.0"
+description = "Text-to-speech with voice cloning using Qwen3-TTS."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [
+    { name = "Kaushik Hazra" },
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Environment :: GPU :: NVIDIA CUDA",
+]
+dependencies = [
+    "qwen_tts",  # no PyPI release yet — install from source
+    "torch>=2.0",
+    "soundfile>=0.12",
+    "numpy>=1.24",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7.0"]
+
+[project.urls]
+Repository = "https://github.com/kaushikhazra/voiceover"
+
+[project.scripts]
+voiceover = "voiceover.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/voiceover"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

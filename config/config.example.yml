@@ -1,0 +1,15 @@
+# ~/.voiceover/config.yml — Voiceover default configuration
+# All keys are optional. CLI flags always override these values.
+
+# Default voice name (loads {voices_dir}/{voice}.wav)
+# voice: lunastis
+
+# Directory containing voice reference WAV files.
+# Supports ~ expansion. Defaults to ~/.voiceover/voices/
+# voices_dir: ~/.voiceover/voices
+
+# Torch device string. Defaults to cuda:0
+# device: cuda:0
+
+# Default emotion/style instruction passed to the TTS model.
+# instruct: "steady, cinematic narration"
