@@ -11,7 +11,7 @@ def test_normalizes_to_target_dbfs():
     t = np.linspace(0, 1, sr, dtype=np.float32)
     audio = 0.5 * np.sin(2 * np.pi * 440 * t)  # RMS ≈ 0.354
 
-    target_dbfs = -20.0
+    target_dbfs = -18.0
     result = normalize_audio(audio, target_level=target_dbfs)
 
     rms_out = np.sqrt(np.mean(result ** 2))
@@ -42,7 +42,7 @@ def test_empty_array_returns_empty():
 
 def test_already_normalized_stays_close():
     """Audio already at target level is not significantly changed."""
-    target_dbfs = -20.0
+    target_dbfs = -18.0
     target_linear = 10 ** (target_dbfs / 20.0)
 
     # Sine wave with RMS exactly at target: amplitude = target * sqrt(2)
