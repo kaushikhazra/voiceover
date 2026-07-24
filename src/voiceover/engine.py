@@ -81,7 +81,7 @@ def split_into_chunks(text: str) -> list[str]:
 
 # --- Audio utilities ---
 
-def normalize_audio(audio: np.ndarray, target_level: float = -20.0) -> np.ndarray:
+def normalize_audio(audio: np.ndarray, target_level: float = -18.0) -> np.ndarray:
     if audio.size == 0:
         return audio
 

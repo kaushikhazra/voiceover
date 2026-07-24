@@ -120,12 +120,12 @@ def test_empty_instruct_becomes_none(mock_get_instance, mock_get_prompt):
 @patch.object(TTSModel, "get_voice_prompt", return_value="fake_prompt")
 @patch.object(TTSModel, "get_instance")
 def test_output_is_normalized(mock_get_instance, mock_get_prompt):
-    """Output audio passes through normalize_audio (RMS near -20 dBFS)."""
+    """Output audio passes through normalize_audio (RMS near -18 dBFS)."""
     mock_model = _make_mock_model()
     mock_get_instance.return_value = mock_model
 
     audio, _ = generate_audio("Hello.", voice_path="fake.wav")
 
     rms = np.sqrt(np.mean(audio ** 2))
-    target_linear = 10 ** (-20.0 / 20.0)  # default target
+    target_linear = 10 ** (-18.0 / 20.0)  # default target
     assert abs(rms - target_linear) < 0.01
